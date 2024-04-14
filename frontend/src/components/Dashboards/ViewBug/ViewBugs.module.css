@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f9f9fa; /* Soft, neutral background */
+  min-height: 100vh;
+}
+
+.heading {
+  color: #2c3e50; /* Deep, rich blue */
+  font-size: 28px; /* Larger for impact */
+  font-weight: 600; /* Semi-bold for presence */
+  margin-bottom: 30px; /* More space below heading */
+  text-transform: uppercase; /* All caps for stylistic emphasis */
+  letter-spacing: 1.5px; /* Spacing for a more distinguished look */
+}
+
+.bugsList {
+  width: 90%;
+  max-width: 1000px; /* Wider maximum width for larger displays */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Larger min column width */
+  gap: 30px; /* Increased gap for better separation */
+}
+
+.bugCard {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px; /* Softer rounded corners */
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Deeper shadow for more depth */
+  transition: all 0.3s ease-in-out;
+}
+
+.bugCard:hover {
+  transform: scale(1.05); /* Subtle scale effect on hover */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.label {
+  display: block;
+  margin-top: 5px;
+  color: #606770; /* Muted color for labels */
+  font-size: 16px; /* Readable size */
+  font-weight: 500; /* Medium weight for clarity */
+}
+
+.value {
+  color: #333;
+  font-size: 18px; /* Slightly larger font size for value */
+  font-weight: bold; /* Bold for emphasis */
+  margin-bottom: 10px; /* Space after each item */
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #3498db; /* Vibrant blue for buttons */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px; /* More vertical space from the list to pagination */
+}
+
+.pageNumber {
+  margin: 0 20px;
+  font-size: 18px; /* Larger for readability */
+  font-weight: 600; /* Semi-bold for a strong presence */
+}
+
+@media (max-width: 768px) {
+  .bugsList {
+      grid-template-columns: 1fr; /* One column on small screens */
+  }
+}
+
