@@ -24,10 +24,10 @@ const Dashboard = () => {
                 return <ViewBugs />;
             case 'OnboardPerson':
                 return <OnboardPerson />;
-            case 'CreateProject':
-                return <CreateProject />;
-            case 'CreateBug':
-                return <CreateBug />;
+            // case 'CreateProject':
+            //     return <CreateProject />;
+            // case 'CreateBug':
+            //     return <CreateBug />;
             case 'ViewProjects':
                 return <ViewProjects />;
             // case 'GenerateReport':
@@ -42,9 +42,9 @@ const Dashboard = () => {
             <div className="navbar">
                 <NavbarButton onClick={() => setActiveView('ViewBugs')}>View Bugs</NavbarButton>
                 <NavbarButton onClick={() => setActiveView('OnboardPerson')}>Onboard a Person</NavbarButton>
-                <NavbarButton onClick={() => setActiveView('CreateProject')}>Create Project</NavbarButton>
+                {/* <NavbarButton onClick={() => setActiveView('CreateProject')}>Create Project</NavbarButton> */}
                 {/* <NavbarButton onClick={() => setActiveView('GenerateReport')}>Generate Report</NavbarButton> */}
-                <NavbarButton onClick={() => setActiveView('CreateBug')}>Create Bug</NavbarButton>
+                {/* <NavbarButton onClick={() => setActiveView('CreateBug')}>Create Bug</NavbarButton> */}
                 <NavbarButton onClick={() => setActiveView('ViewProjects')}>View Projects</NavbarButton>
             </div>
             <div className="content">
