@@ -16,7 +16,6 @@ const NavbarButton = ({ children, onClick }) => (
 );
 
 const Dashboard = () => {
-    // State to control which component to display
     const [activeView, setActiveView] = useState('ViewBugs');
 
     const renderComponent = () => {
