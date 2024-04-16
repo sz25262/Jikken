@@ -14,21 +14,14 @@ const ViewBugs = () => {
         fetchData();
     }, []);
 
-    const fetchData = () => {
+    const fetchData = async () => {
         const data = [
-            { id: 1, bugName: 'Bug 1', bugType: 'Type 1', currentStatus: 'Open', assignee: 'User A', expectedOutput: '', currentOutput: '' },
-            { id: 2, bugName: 'Bug 2', bugType: 'Type 2', currentStatus: 'Closed', assignee: 'User B', expectedOutput: '', currentOutput: '' },
-            { id: 3, bugName: 'Bug 3', bugType: 'Type 3', currentStatus: 'Open', assignee: 'User C', expectedOutput: '', currentOutput: '' },
+            { id: 1, bugName: 'Bug 1', bugType: 'Type 1', currentStatus: 'Open', assignee: 'User A', expectedOutput: '', currentOutput: '', comments: 'Needs quick resolution.', image: 'url_to_image' },
         ];
         setBugs(data);
     };
 
-    const handleCreateOrEditBug = (bugData, id) => {
-        if (id) {
-            setBugs(bugs.map(bug => bug.id === id ? { ...bug, ...bugData } : bug));
-        } else {
-            setBugs([...bugs, { ...bugData, id: bugs.length + 1 }]);
-        }
+    const handleCreateOrEditBug = (formData, id) => {
         setIsModalOpen(false);
     };
 
@@ -50,6 +43,8 @@ const ViewBugs = () => {
                         <p><strong>Bug Type:</strong> {bug.bugType}</p>
                         <p><strong>Current Status:</strong> {bug.currentStatus}</p>
                         <p><strong>Assignee:</strong> {bug.assignee}</p>
+                        <p><strong>Comments:</strong> {bug.comments}</p>
+                        {bug.image && <img src={bug.image} alt="Bug" className={styles.bugImage} />}
                         <button onClick={() => openEditModal(bug)} className={styles.button}>Edit</button>
                     </div>
                 ))}
@@ -64,7 +59,6 @@ const ViewBugs = () => {
             </Modal>
         </div>
       );
-      
 };
 
 export default ViewBugs;
