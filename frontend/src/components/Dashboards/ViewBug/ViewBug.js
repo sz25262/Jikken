@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import CreateBug from './CreateBug';
 import styles from './ViewBugs.module.css';
@@ -6,28 +6,67 @@ import styles from './ViewBugs.module.css';
 Modal.setAppElement('#root');
 
 const ViewBugs = () => {
-    const [bugs, setBugs] = useState([]);
+    const [bugs, setBugs] = useState([
+        {
+            "id": 1,
+            "bugName": "Unresponsive Click Events on Buttons",
+            "bugType": "UI/UX Issue",
+            "currentStatus": "Open",
+            "assignee": "Dev Team Lead",
+            "expectedOutput": "All buttons should trigger actions when clicked.",
+            "currentOutput": "Submit button unresponsive on mobile devices.",
+            "comments": "Check touch event handlers or CSS issues.",
+            "image": "url_to_image_1"
+        },
+        {
+            "id": 2,
+            "bugName": "Data Fetching Error on Dashboard",
+            "bugType": "API Integration Issue",
+            "currentStatus": "In Progress",
+            "assignee": "Backend Developer",
+            "expectedOutput": "Dashboard displays latest data.",
+            "currentOutput": "Shows 'Failed to fetch data' intermittently.",
+            "comments": "Possible API timeout during peak times.",
+            "image": "url_to_image_2"
+        },
+        {
+            "id": 3,
+            "bugName": "Memory Leak in Component",
+            "bugType": "Performance Issue",
+            "currentStatus": "Open",
+            "assignee": "Performance Engineer",
+            "expectedOutput": "No memory leaks.",
+            "currentOutput": "UserProfile component causes memory leaks.",
+            "comments": "Check for uncleared intervals and subscriptions.",
+            "image": "url_to_image_3"
+        },
+        {
+            "id": 4,
+            "bugName": "Inconsistent Styling Across Browsers",
+            "bugType": "Cross-Browser Compatibility",
+            "currentStatus": "Open",
+            "assignee": "Frontend Developer",
+            "expectedOutput": "Consistent layout across browsers.",
+            "currentOutput": "Navigation bar breaks on Firefox.",
+            "comments": "Possible CSS Flexbox issues.",
+            "image": "url_to_image_4"
+        }
+    ]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editableBug, setEditableBug] = useState(null);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = async () => {
-        const data = [
-            { id: 1, bugName: 'Bug 1', bugType: 'Type 1', currentStatus: 'Open', assignee: 'User A', expectedOutput: '', currentOutput: '', comments: 'Needs quick resolution.', image: 'url_to_image' },
-        ];
-        setBugs(data);
-    };
-
-    const handleCreateOrEditBug = (formData, id) => {
+    const handleCreateOrEditBug = (bugData, id) => {
         setIsModalOpen(false);
+        setBugs(prevBugs => prevBugs.map(bug => bug.id === id ? { ...bug, ...bugData } : bug));
     };
 
     const openEditModal = (bug) => {
         setEditableBug(bug);
         setIsModalOpen(true);
+    };
+
+    const deleteBug = (id) => {
+        setBugs(prevBugs => prevBugs.filter(bug => bug.id !== id));
     };
 
     return (
@@ -37,8 +76,8 @@ const ViewBugs = () => {
                 <button onClick={() => { setEditableBug(null); setIsModalOpen(true); }} className={styles.button}>Create New Bug</button>
             </div>
             <div className={styles.bugsList}>
-                {bugs.map((bug, index) => (
-                    <div key={index} className={styles.bugCard}>
+                {bugs.map((bug) => (
+                    <div key={bug.id} className={styles.bugCard}>
                         <p><strong>Bug Name:</strong> {bug.bugName}</p>
                         <p><strong>Bug Type:</strong> {bug.bugType}</p>
                         <p><strong>Current Status:</strong> {bug.currentStatus}</p>
@@ -46,6 +85,7 @@ const ViewBugs = () => {
                         <p><strong>Comments:</strong> {bug.comments}</p>
                         {bug.image && <img src={bug.image} alt="Bug" className={styles.bugImage} />}
                         <button onClick={() => openEditModal(bug)} className={styles.button}>Edit</button>
+                        <button onClick={() => deleteBug(bug.id)} className={styles.button}>Delete</button>
                     </div>
                 ))}
             </div>
@@ -58,7 +98,7 @@ const ViewBugs = () => {
                 <CreateBug onBugCreated={handleCreateOrEditBug} closeModal={() => setIsModalOpen(false)} bug={editableBug} />
             </Modal>
         </div>
-      );
+    );
 };
 
 export default ViewBugs;

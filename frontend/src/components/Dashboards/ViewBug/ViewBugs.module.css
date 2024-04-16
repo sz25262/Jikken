@@ -3,13 +3,13 @@
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  background-color: #f5f5f5; /* Soft gray background */
+  background-color: #f5f5f5;
   min-height: 100vh;
 }
 
 .heading {
-  color: #333; /* Dark gray for heading */
-  font-family: 'Helvetica', sans-serif; /* Classic font */
+  color: #333;
+  font-family: 'Helvetica', sans-serif;
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 30px;
@@ -27,7 +27,7 @@
 
 .bugCard {
   background-color: #ffffff;
-  border: 1px solid #ddd; /* Light border for separation */
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -35,27 +35,13 @@
 }
 
 .bugCard:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
+  transform: translateY(-5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.label {
-  display: block;
-  margin-top: 5px;
-  color: #666; /* Slightly darker gray for labels */
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.value {
-  color: #333;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .button {
   padding: 10px 20px;
+  margin: 0px 10px;
   background-color: #3498db;
   color: #fff;
   border: none;
@@ -89,14 +75,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 300ms ease-in-out;
 }
 
 .buttonContainer {
   display: flex;
-  justify-content: flex-end; /* Align button to the right */
+  justify-content: flex-end;
   width: 90%;
   max-width: 1000px;
-  margin-bottom: 20px; /* Add some space below the button */
+  margin-bottom: 20px;
 }
